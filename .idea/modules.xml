@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/banking-transaction-engine.iml" filepath="$PROJECT_DIR$/.idea/banking-transaction-engine.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/banking-transaction-engine.main.iml" filepath="$PROJECT_DIR$/.idea/modules/banking-transaction-engine.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/banking-transaction-engine.test.iml" filepath="$PROJECT_DIR$/.idea/modules/banking-transaction-engine.test.iml" />
     </modules>
   </component>
 </project>
