@@ -7,6 +7,7 @@ import com.example.banking_transaction_engine.account.repository.AccountReposito
 import com.example.banking_transaction_engine.account.repository.CustomerRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import java.math.BigDecimal;
 import java.security.SecureRandom;
@@ -19,7 +20,7 @@ public class AccountService {
     private final AccountRepository accountRepository;
     private static final SecureRandom random = new SecureRandom();
 
-    @Transactional
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
     public Customer createCustomer(CreateCustomerRequest request) {
         if (customerRepository.findByEmail(request.getEmail()).isPresent()) {
             throw new IllegalArgumentException("Customer with this email already exists");
@@ -34,7 +35,7 @@ public class AccountService {
         return customerRepository.save(customer);
     }
 
-    @Transactional
+    @Transactional(propagation = Propagation.REQUIRES_NEW)
     public AccountResponse createAccount(CreateAccountRequest request) {
         Customer customer = customerRepository.findById(request.getCustomerId())
                 .orElseThrow(() -> new IllegalArgumentException("Customer not found"));
